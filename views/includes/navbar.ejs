@@ -1,0 +1,52 @@
+<div id="main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="/"><img src="/images/logo.png"></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="main-menu">
+                    <ul class="ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item <%= path === '/about' ? 'active' : '' %>">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item <%= path === '/contact' ? 'active' : '' %>">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <ul>
+                        <% if (!isAuthenticated) { %>
+                            <div class="main-menu">
+                                <li class="nav-item" <%=path==='/login' ? 'active' : '' %>>
+                                    <a href="/login" class="nav-link">Sign in</a>
+                                </li>
+                                <li class="nav-item" <%=path==='/signup' ? 'active' : '' %>>
+                                    <a href="/signup" class="nav-link">Sign up</a>
+                                </li>
+                            </div>
+
+                            <% } else { %>
+                                <div class="nav-logout">
+                                    <li>
+                                        <a href="/logout" class="">Log out</a>
+                                    </li>
+                                </div>
+
+                    </ul>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<%- include("../includes/head_admin.ejs") %>
+
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <%- include("../includes/sidebar_admin.ejs") %>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+          <section class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                  <h1>Update Post</h1>
+                </div>
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">updating the Post</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+
+          <!-- CREATION OF POSTS -->
+          <section class="ftco-section">
+            <div class="container">
+              <form method="POST" id="contactForm" action="/admin/editpost/<%=post._id %>" name="contactForm"
+                class="contactForm">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="label" for="title">Title</label>
+                      <input type="text" class="form-control" name="title" id="name" placeholder="Title"
+                        value="<%= post.title %>">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="label" for="image">Image</label>
+                      <input type="" class="form-control" name="imageUrl" id="" placeholder="url"
+                        value="<%= post.imageUrl %>">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+
+                      <!-- /.card-header -->
+
+
+                      <!-- /.form-group -->
+
+                      <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- /.col -->
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="label" for="description">Description</label>
+                      <textarea name="description" class="form-control" id="description" cols="130"
+                        placeholder="Description" rows="30"><%-post.description%></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+
+                      <input type="submit" value="Edit Post" class="btn btn-primary">
+                      <div class="submitting"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="col-md-5 d-flex align-items-stretch">
+          <div class="info-wrap w-100 p-5 img" style="background-image: url(images/img.jpg);">
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </section>
+
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+        <script>
+          $(document).ready(function () {
+            $('#summernote').summernote();
+
+            // Pre-populate the editor with existing content
+            var existingContent = '<%- post.description %>';
+            $('#summernote').summernote('code', existingContent);
+          });
+        </script>
+        <!-- jQuery -->
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+        <script src="/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- jsGrid -->
+        <script src="/plugins/jsgrid/demos/db.js"></script>
+        <script src="/plugins/jsgrid/jsgrid.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="/js/demo.js"></script>
+        <!-- Page specific script -->
+  </body>
+
+  </html>

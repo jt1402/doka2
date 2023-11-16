@@ -1,0 +1,66 @@
+<section class="pagination1 justify-content-center">
+  <div style="padding: 1rem">
+    <% if (currentPage !== 1 && previousPage !== 1) { %>
+    <a
+      href="?page=1"
+      style="
+        background-color: #f59d44;
+        color: white;
+        padding: 0.7em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      "
+      >1</a
+    >
+    <% } %> <% if (hasPreviousPage) { %>
+    <a
+      href="?page=<%= previousPage %>"
+      style="
+        background-color: #f59d44;
+        color: white;
+        padding: 0.7em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      "
+      ><%= previousPage %></a
+    >
+    <% } %>
+    <a
+      href="?page=<%= currentPage %>"
+      style="
+        background-color: #f59d44;
+        color: white;
+        padding: 0.7em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      "
+      class="active"
+      ><%= currentPage %></a
+    >
+    <% if (hasNextPage) { %>
+    <a
+      href="?page=<%= nextPage %>"
+      style="
+        background-color: #f59d44;
+        color: white;
+        padding: 0.7em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      "
+      ><%= nextPage %></a
+    >
+    <% } %> <% if (lastPage !== currentPage && nextPage !== lastPage) { %>
+    <a
+      style="
+        background-color: #f59d44;
+        color: white;
+        padding: 0.7em 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      "
+      href="?page=<%= lastPage %>"
+      ><%= lastPage %></a
+    >
+    <% } %>
+  </div>
+</section>

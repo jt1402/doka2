@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Doka 2 Blog</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link
+        href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/templatemo_style.css">
+    <link rel="stylesheet" href="css/templatemo_misc.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/testimonails-slider.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+</head>
+
+
+
+<body>
+    <!-- navbar -->
+    <header>
+        <%- include("../includes/navbar.ejs") %>
+    </header>
+
+    <!-- slider -->
+    <div id="slider" style="font-style:'Montserrat', sans-serif;">
+        <div class="flexslider">
+            <ul class="slides" style="font-style:'Montserrat', sans-serif;">
+                <% selectedPosts.slice(0,5).forEach(post=> { %>
+                    <li>
+                        <div class="slider-caption">
+                            <h1 style="font-style:'Montserrat', sans-serif;">
+                                <%=post.title%>
+                            </h1>
+                            <p style="font-style:'Montserrat', sans-serif;">
+                                <%= post.description.length> 100 ? post.description.substring(0, 100) + '...' :
+                                    post.description %>
+                            </p>
+                            <a href="/single-page/<%=post._id%>">read</a>
+                        </div>
+                        <img src="<%=post.imageUrl%>" alt="" />
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+    </div>
+
+    <!-- blog -->
+    <div id="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2>Latest blog posts</h2>
+                        <img src="images/under-heading.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% postList.forEach(post=> {%>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="blog-post">
+                            <div class="blog-thumb">
+                                <a href="/single-page/<%=post._id%>">
+                                    <img src=" <%=post.imageUrl%>" alt="" />
+                                </a>
+                            </div>
+                            <div class="blog-content">
+                                <div class="content-show">
+                                    <h4><a href="/single-page/<%=post._id%>">
+                                            <%= post.title%>
+                                        </a></h4>
+                                    <span>
+                                        <%=new Date(post.createdAt).toLocaleDateString()%>
+                                    </span>
+                                </div>
+                                <div class="content-hide">
+                                    <%= post.description.length> 100 ? post.description.substring(0, 100) + '...' :
+                                        post.description %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center">
+        <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage:
+            previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+    </div>
+
+
+    <!-- services -->
+
+    <div id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2>Our Dota 2 Services</h2>
+                        <img src="images/under-heading.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <i class="fa fa-pencil"></i>
+                        </div>
+                        <h4>Strategy Analysis</h4>
+                        <p>Expert analysis of Dota 2 strategies and gameplay. Suspendisse rhoncus vitae enim et
+                            faucibus. Ut dignissim nec
+                            arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+                            leoneski.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <h4>Tournament Promotions</h4>
+                        <p>Promote your Dota 2 tournaments with our effective strategies. Suspendisse rhoncus vitae enim
+                            et faucibus. Ut dignissim nec
+                            arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+                            leoneski.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <i class="fa fa-bell"></i>
+                        </div>
+                        <h4>24/7 Dota 2 Support</h4>
+                        <p>Always ready to serve you with our 24/7 Dota 2 support. Suspendisse rhoncus vitae enim et
+                            faucibus. Ut dignissim nec
+                            arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+                            leoneski.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <h4>Player Satisfaction</h4>
+                        <p>Ensuring player satisfaction with our top-notch Dota 2 services. Suspendisse rhoncus vitae
+                            enim et faucibus. Ut dignissim nec
+                            arcu nec hendrerit. Sed arcu sagittis vel diam in, malesuada malesuada risus. Aenean a sem
+                            leoneski.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- testimonials -->
+    <div id="testimonails">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2>What Dota 2 Players Say</h2>
+                        <img src="images/under-heading.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="testimonails-slider">
+                        <ul class="slides">
+                            <li>
+                                <div class="testimonails-content">
+                                    <p>As a dedicated Dota 2 Analyst, this platform has been instrumental in refining my
+                                        skills and understanding advanced strategies. The community support is
+                                        exceptional, making it an indispensable resource for every Dota 2 enthusiast.
+                                    </p>
+                                    <h6>Natalie - <a href="#">Dota 2 Analyst</a></h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="testimonails-content">
+                                    <p>Dota 2 Services has transformed my tournament promotions. Their effective
+                                        strategies and dedicated support have significantly elevated the visibility of
+                                        my Dota 2 events. I highly recommend it to anyone in the esports community.</p>
+                                    <h6>Chris - <a href="#">Esports Organizer</a></h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="testimonails-content">
+                                    <p>Being a competitive Dota 2 player, I value the 24/7 support provided by Dota 2
+                                        Services. Whether it's technical assistance or strategic advice, they are always
+                                        ready to serve. A must-have for serious Dota 2 enthusiasts.</p>
+                                    <h6>Sarah - <a href="#">Pro Gamer</a></h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+
+    <footer><%- include("../includes/footer.ejs") %></footer>
+
+
+    <script src="vendor/jquery-1.11.0.min.js"></script>
+    <script src="vendor/jquery.gmap3.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

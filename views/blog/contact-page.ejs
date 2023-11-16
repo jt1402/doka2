@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link
+        href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/templatemo_style.css">
+    <link rel="stylesheet" href="css/templatemo_misc.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/testimonails-slider.css">
+
+    <script src="vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <%- include("../includes/navbar.ejs") %>
+    </header>
+
+
+    <div id="heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-content">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="product-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2>Feel free to send a message</h2>
+                        <img src="images/under-heading.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="contact-us">
+                <div class="container">
+                    <div class="row">
+                        <div class="product-item col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="message-form">
+                                        <form action="#" method="post" class="send-message">
+                                            <div class="row">
+                                                <div class="name col-md-4">
+                                                    <input type="text" name="name" id="name" placeholder="Name" />
+                                                </div>
+                                                <div class="email col-md-4">
+                                                    <input type="text" name="email" id="email" placeholder="Email" />
+                                                </div>
+                                                <div class="subject col-md-4">
+                                                    <input type="text" name="subject" id="subject"
+                                                        placeholder="Subject" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="text col-md-12">
+                                                    <textarea name="text" placeholder="Message"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="send">
+                                                <button type="submit">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="info">
+                                        <div class="more-info">
+                                            <p>If you have any questions or need help, don't hesitate to get in touch.
+                                                Our committed team is available to guide you through the thrilling realm
+                                                of Dota 2. We aim to create an inviting environment for conversations,
+                                                sharing strategies, and fostering community engagement.</p>
+                                            <ul>
+                                                <li><i class="fa fa-phone"></i>020-2222-4344</li>
+                                                <li><i class="fa fa-globe"></i>141, Seoul, South Korea</li>
+                                                <li><i class="fa fa-envelope"></i><a href="#">info@doka2.com</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-section">
+                            <h2>Find Us On Map</h2>
+                            <img src="images/under-heading.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            src="https://maps.google.com/maps?q=37.566535,126.977969&hl=en&z=15&output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer><%- include("../includes/footer.ejs") %></footer>
+
+        <script src="vendor/jquery-1.11.0.min.js"></script>
+        <script src="vendor/jquery.gmap3.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&amp;sensor=false">
+            </script>
+
+        <script>
+
+            var map;
+
+            function initialize() {
+                var map_options = {
+                    center: new google.maps.LatLng(37.566535, 126.977969), // Seoul coordinates
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), map_options);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addDomListener(window, "resize", function () {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, "resize");
+                map.setCenter(center);
+            });
+        </script>
+
+</body>
+
+</html>
