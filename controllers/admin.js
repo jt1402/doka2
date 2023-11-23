@@ -1,7 +1,20 @@
 const Post = require("../models/posts");
+const User = require("../models/user");
 
-exports.getIndex = (req, res, next) => {
-  res.render("admin/index");
+exports.getIndex = async (req, res, next) => {
+  try {
+    const userCount = await User.countDocuments();
+    const postCount = await Post.countDocuments(); // Fetch post count
+
+    res.render("admin/index", {
+      userCount: userCount,
+      postCount: postCount, // Pass post count to the template
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStatusCode = 500;
+    return next(error);
+  }
 };
 
 exports.getAdvanced = (req, res, next) => {
@@ -26,9 +39,12 @@ exports.getEditor = (req, res, next) => {
 
 exports.getPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });;;
+    const postCount = await Post.countDocuments();
+
     res.render("admin/posts", {
       postList: posts,
+      postCount: postCount,
     });
   } catch (err) {
     const error = new Error(err);
@@ -71,20 +87,26 @@ exports.postCreatePost = async (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const description = req.body.description;
+
   try {
     const post = new Post({
       title: title,
       imageUrl: imageUrl,
       description: description,
     });
-    const result = await post.save();
-    const posts = await Post.find();
+
+    await post.save();
+
+    // Increment the post count
+    const posts = await Post.find().sort({ createdAt: -1 });;
+    const postCount = await Post.countDocuments();
     res.render("admin/posts", {
-      postList: posts,
+      postList: posts, // You may fetch the actual post list here,
+      postCount: postCount,
     });
   } catch (err) {
-    if (!err.statuscode) {
-      statuscode = 500;
+    if (!err.statusCode) {
+      err.statusCode = 500;
     }
     next(err);
   }

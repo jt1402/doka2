@@ -83,12 +83,14 @@ exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
     console.log(errors.array());
     return res.status(422).render("auth/signup", {
       pageTitle: "Signup",
     });
   }
+
   bcrypt
     .hash(password, 12)
     .then((hashedPw) => {
@@ -97,15 +99,32 @@ exports.postSignup = (req, res, next) => {
         password: hashedPw,
         name: name,
       });
+
       return user.save();
     })
     .then((result) => {
-      res.redirect("/login");
+      // Comment out or remove the code related to sending signup success email
+      /*
       return transporter.sendMail({
         to: email,
         from: "theway1402@gmail.com",
         subject: "Signup succeeded",
         html: "<h1>Signup succeeded<h1>",
+      });
+      */
+    })
+    .then((result) => {
+      // Redirect to the login page after successful signup
+      res.redirect("/login");
+    })
+    .then((result) => {
+      // Increment the user count
+      return User.countDocuments();
+    })
+    .then((userCount) => {
+      // Render the page with the updated count
+      res.render("admin/index", {
+        userCount: userCount,
       });
     })
     .catch((err) => {

@@ -1,4 +1,14 @@
 
+/* Nav-Authentication */
+.user-avatar {
+  width: 50px; /* Set the width and height as needed */
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%; /* Makes the element a circle */
+  border: 2px solid #fff; /* Optional: Add a border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
 /*-- Basic --*/
 a {
   text-decoration: none;
